@@ -13,10 +13,10 @@ databases:
 services:
 - type: pserv
   name: temporal
+  runtime: docker
   autoDeploy: false
-  plan: basic-256mb
+  plan: standard
   region: singapore
-  env: docker
   dockerfilePath: ./server/Dockerfile
   envVars:
   - key: SERVICES
@@ -75,10 +75,10 @@ services:
       property: host
 - type: web
   name: temporal-ui
+  runtime: docker
   autoDeploy: false
-  plan: basic-256mb
+  plan: standard
   region: singapore
-  env: docker
   dockerfilePath: ./web/Dockerfile
   envVars:
   - key: PORT
@@ -93,9 +93,10 @@ services:
 - type: web
   repo: https://github.com/render-examples/sample-temporal-app
   name: app-workflow-trigger
-  plan: basic-256mb
+  runtime: docker
+  autoDeploy: false
+  plan: standard
   region: singapore
-  env: go
   buildCommand: go build start/main.go
   startCommand: ./main
   envVars:
@@ -107,9 +108,10 @@ services:
 - type: worker
   repo: https://github.com/render-examples/sample-temporal-app
   name: app-worker
-  plan: basic-256mb
+  runtime: docker
+  autoDeploy: false
+  plan: standard
   region: singapore
-  env: go
   buildCommand: go build worker/main.go
   startCommand: ./main
   envVars:
