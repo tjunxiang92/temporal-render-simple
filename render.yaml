@@ -2,19 +2,19 @@ databases:
 - name: temporal-db
   databaseName: temporal
   user: temporal
-  plan: starter
+  plan: basic-256mb
   region: singapore
 - name: temporal-db-visibility
   databaseName: visibility
   user: visibility
-  plan: Starter
+  plan: basic-256mb
   region: singapore
 
 services:
 - type: pserv
   name: temporal
   autoDeploy: false
-  plan: starter
+  plan: basic-256mb
   region: singapore
   env: docker
   dockerfilePath: ./server/Dockerfile
@@ -76,7 +76,7 @@ services:
 - type: web
   name: temporal-ui
   autoDeploy: false
-  plan: Starter
+  plan: basic-256mb
   region: singapore
   env: docker
   dockerfilePath: ./web/Dockerfile
@@ -93,7 +93,7 @@ services:
 - type: web
   repo: https://github.com/render-examples/sample-temporal-app
   name: app-workflow-trigger
-  plan: Starter
+  plan: basic-256mb
   region: singapore
   env: go
   buildCommand: go build start/main.go
@@ -107,7 +107,7 @@ services:
 - type: worker
   repo: https://github.com/render-examples/sample-temporal-app
   name: app-worker
-  plan: Starter
+  plan: basic-256mb
   region: singapore
   env: go
   buildCommand: go build worker/main.go
